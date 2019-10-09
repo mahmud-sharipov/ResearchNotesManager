@@ -9,9 +9,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 
-namespace ResearchNotesManager.App.BusinessLogic
+namespace ResearchNotesManager.Model
 {
 
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
@@ -61,7 +60,7 @@ namespace ResearchNotesManager.App.BusinessLogic
             return false;
         }
 
-        static string GetConnectionString(string dbName, string userName = "root", string pass = "") => 
+        static string GetConnectionString(string dbName, string userName = "root", string pass = "") =>
             string.Format(ConfigurationManager.ConnectionStrings["mysqlCon"].ConnectionString, "localhost",
                            "3306", dbName, userName, pass);
 
@@ -117,7 +116,7 @@ namespace ResearchNotesManager.App.BusinessLogic
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
                 return 0;
             }
         }

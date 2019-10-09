@@ -1,7 +1,7 @@
-﻿using ResearchNotesManager.App.BusinessLogic.Entityes;
+﻿using ResearchNotesManager.Model.Entityes;
 using System.Data.Entity;
 
-namespace ResearchNotesManager.App.BusinessLogic
+namespace ResearchNotesManager.Model
 {
     public class DbModelBuilderManager
     {
