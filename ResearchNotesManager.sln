@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29001.49
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResearchNotesManager.App", "ResearchNotesManager.App\ResearchNotesManager.App.csproj", "{B764EB51-BB46-4494-97F8-306FDB2B6204}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B764EB51-BB46-4494-97F8-306FDB2B6204}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B764EB51-BB46-4494-97F8-306FDB2B6204}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B764EB51-BB46-4494-97F8-306FDB2B6204}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B764EB51-BB46-4494-97F8-306FDB2B6204}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B5ED3914-9758-4E42-80AE-495BFA7CBB91}
+	EndGlobalSection
+EndGlobal
