@@ -4,13 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ResearchNotesManager.Model.Entityes
+namespace ResearchNotesManager.Model.Entities
 {
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Data.Entity;
     public class ProductLot : EntityBase
     {
+        public ProductLot()
+        {
+
+        }
+
         public ProductLot(EntityContext context) : base(context) { }
 
         Product _product;

@@ -1,6 +1,8 @@
-﻿using ResearchNotesManager.App;
-using ResearchNotesManager.Model;
-using System.Windows;
+﻿using MahApps.Metro.Controls;
+using MaterialDesignThemes.Wpf;
+using ResearchNotesManager.App.General;
+using ResearchNotesManager.App.Pages;
+using System;
 
 namespace ResearchNotesManager.App
 {
@@ -8,8 +10,10 @@ namespace ResearchNotesManager.App
     {
         public MainWindow()
         {
+            DataContext = new WindowsViewModel();
             InitializeComponent();
-            new EntityContext();
+            UIManager.MessageManager.SetSnackbar(Snackbar);
+            Snackbar.MessageQueue = new SnackbarMessageQueue(TimeSpan.FromMilliseconds(6000));
         }
     }
 }

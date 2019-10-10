@@ -71,6 +71,18 @@
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Home\HomeViewModel.cs" />
+    <Compile Include="Pages\ProductLots\ProductLotsViewModel.cs" />
+    <Compile Include="Pages\ProductLots\ProductLots.xaml.cs">
+      <DependentUpon>ProductLots.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Product\Products.xaml.cs">
+      <DependentUpon>Products.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Product\ProductsViewModel.cs" />
+    <Compile Include="Pages\SearchView\SearchViewControl.xaml.cs">
+      <DependentUpon>SearchViewControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SearchView\SearchViewModel.cs" />
     <Compile Include="Pages\WindowsViewModel.cs" />
     <Compile Include="ValidationRules\NotEmptyValidationRule.cs" />
     <Page Include="MainWindow.xaml">
@@ -86,6 +98,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\Home\HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ProductLots\ProductLots.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Product\Products.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SearchView\SearchViewControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -148,6 +172,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Converter\" />
+  </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="StartSplashScreen.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,21 +4,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ResearchNotesManager.Model.Entityes
+namespace ResearchNotesManager.Model.Entities
 {
-
-    using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Collections.Specialized;
     using System.Data.Entity;
     public class Product : EntityBase
     {
-        public Product(EntityContext context) : base(context) { }
+        public Product() { }
+
+        public Product(EntityContext context) : base(context)
+        {
+            Lots.CollectionChanged += MakeDirtyNetQuantity;
+            Experiments.CollectionChanged += MakeDirtyNetQuantity;
+        }
+
+        private void MakeDirtyNetQuantity(object sender, NotifyCollectionChangedEventArgs e) => RaisePropertyChanged(nameof(NetQuantity));
+
+        public string Sku => Name.Substring(0, 2).ToUpper();
 
         string _name;
         public string Name
         {
             get => _name;
-            set => OnPropertySetting(nameof(Name), value, ref _name);
+            set
+            {
+                OnPropertySetting(nameof(Name), value, ref _name);
+                RaisePropertyChanged(nameof(Sku));
+            }
         }
 
         string _description;
@@ -28,7 +41,7 @@ namespace ResearchNotesManager.Model.Entityes
             set => OnPropertySetting(nameof(Description), value, ref _description);
         }
 
-        public virtual decimal NetQuantity => 0;
+        public virtual decimal NetQuantity => Lots.Sum(l => l.Quantity) - Experiments.Sum(e => e.Quantity);
 
         UnitOfMeasures _uom;
         public virtual UnitOfMeasures UOM
@@ -37,15 +50,15 @@ namespace ResearchNotesManager.Model.Entityes
             set => OnPropertySetting(nameof(UOM), value, ref _uom);
         }
 
-        private ICollection<ProductLot> _lots = new ObservableCollection<ProductLot>();
-        public virtual ICollection<ProductLot> Lots
+        private ObservableCollection<ProductLot> _lots = new ObservableCollection<ProductLot>();
+        public virtual ObservableCollection<ProductLot> Lots
         {
             get => _lots;
             set => OnPropertySetting(nameof(Lots), value, ref _lots);
         }
 
-        private ICollection<Experiment> _experriments = new ObservableCollection<Experiment>();
-        public virtual ICollection<Experiment> Experiments
+        private ObservableCollection<Experiment> _experriments = new ObservableCollection<Experiment>();
+        public virtual ObservableCollection<Experiment> Experiments
         {
             get => _experriments;
             set => OnPropertySetting(nameof(Experiments), value, ref _experriments);
@@ -59,6 +72,8 @@ namespace ResearchNotesManager.Model.Entityes
         {
             var config = modelBuilder.Entity<Product>();
             config.ToTable(prefix + "Products").HasKey(p => p.Guid);
+            config.Ignore(p => p.NetQuantity);
+            config.Ignore(p => p.Sku);
             config.HasMany(p => p.Lots).WithRequired(pl => pl.Product).WillCascadeOnDelete(true);
             config.HasRequired(p => p.UOM);
             config.HasMany(p => p.Experiments).WithRequired(e => e.Product).WillCascadeOnDelete(true);

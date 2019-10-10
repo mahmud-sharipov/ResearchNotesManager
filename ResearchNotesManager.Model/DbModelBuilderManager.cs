@@ -1,4 +1,4 @@
-﻿using ResearchNotesManager.Model.Entityes;
+﻿using ResearchNotesManager.Model.Entities;
 using System.Data.Entity;
 
 namespace ResearchNotesManager.Model

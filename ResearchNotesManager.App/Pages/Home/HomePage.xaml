@@ -1,12 +1,98 @@
-﻿<UserControl x:Class="ResearchNotesManager.App.Pages.Home.HomePage"
+﻿<localGeneral:BasePage  x:Class="ResearchNotesManager.App.Pages.Home.HomePage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ResearchNotesManager.App.Pages.Home"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                       xmlns:materialDesign="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+                       xmlns:localGeneral="clr-namespace:ResearchNotesManager.App.General"
+                       xmlns:pages="clr-namespace:ResearchNotesManager.App.Pages.SearchView"
+                       xmlns:materialConvertor="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
+                       Title="Home page"
+                       mc:Ignorable="d" 
+                       d:DesignHeight="450" d:DesignWidth="800">
+    <localGeneral:BasePage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries />
+            <materialConvertor:BrushRoundConverter x:Key="BrushRoundConverter" />
+            <Style
+                x:Key="TileButton"
+                BasedOn="{StaticResource MaterialDesignFlatButton}"
+                TargetType="Button">
+                <Setter Property="Width" Value="100" />
+                <Setter Property="Height" Value="130" />
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Style.Triggers>
+                    <Trigger Property="IsPressed" Value="True">
+                        <Setter Property="RenderTransform">
+                            <Setter.Value>
+                                <ScaleTransform ScaleX=".97" ScaleY=".97" />
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="RenderTransformOrigin" Value=".2,.2" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </localGeneral:BasePage.Resources>
     <Grid>
-            
-    </Grid>
-</UserControl>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="6*"/>
+            </Grid.RowDefinitions>
+            <Grid VerticalAlignment="Top" Margin="0 0 0 0" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+                <pages:SearchViewControl Width="500" />
+            </Grid>
+            <ItemsControl ItemsSource="{Binding Navigations}" VerticalAlignment="Bottom" Margin="0 0 0 20" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="40 5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Text="{Binding Title}" Style="{StaticResource MaterialDesignDisplay1TextBlock}" Margin="0 0 0 10"/>
+                            <ItemsControl Grid.Row="1" ItemsSource="{Binding Items}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel HorizontalAlignment="Left"
+                                               VerticalAlignment="Top"
+                                               Orientation="Vertical" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button Command="{Binding Action}" Margin="0 5" HorizontalAlignment="Left"  Padding="5 2 10 2"
+                                            Style="{StaticResource MaterialDesignFlatButton}" MinHeight="50">
+                                            <StackPanel Orientation="Horizontal">
+                                                <materialDesign:PackIcon Margin="0 0 5 0" Kind="{Binding Icon}" Width="30" 
+                                                                     Height="30" VerticalAlignment="Center"
+                                                                     Foreground="{DynamicResource AccentBaseColorBrush}"/>
+
+                                                <TextBlock Text="{Binding Label}" VerticalAlignment="Center" FontSize="17"
+                                                       Foreground="{DynamicResource AccentSelectedColorBrush}"
+                                                       Style="{StaticResource MaterialDesignSubheadingTextBlock}" />
+                                            </StackPanel>
+                                        </Button>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+</localGeneral:BasePage>
