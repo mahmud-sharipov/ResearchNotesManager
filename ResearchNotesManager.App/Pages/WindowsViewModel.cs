@@ -1,4 +1,5 @@
 ﻿using ResearchNotesManager.App.General;
+using ResearchNotesManager.App.Pages.Home;
 using ResearchNotesManager.Model;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,8 @@ namespace ResearchNotesManager.App.Pages
         {
             if (UIManager.PageManager.HomePage == null)
             {
-                //UIManager.PageManager.HomePage = new HomePage();
+                //Seacrch View
+                UIManager.PageManager.HomePage = new HomePage();
                 UIManager.PageManager.HomePage.ViewModel.DataProvider = DataProvider;
             }
         }
@@ -45,7 +47,7 @@ namespace ResearchNotesManager.App.Pages
             if (UIManager.PageManager.IsPageAlreadyOpened(UIManager.PageManager.HomePage.Id))
                 UIManager.PageManager.SetCurrentPage(UIManager.PageManager.HomePage.Id);
             else
-                ;// UIManager.PageManager.AddPage(new HomePage());
+                UIManager.PageManager.AddPage(new HomePage());
         });
 
         public override Command DiscardChanges => new Command(p => { });

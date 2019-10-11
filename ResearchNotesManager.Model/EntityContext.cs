@@ -1,4 +1,5 @@
 ﻿using MySql.Data.Entity;
+using ResearchNotesManager.Model.Entities;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -6,9 +7,6 @@ using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ResearchNotesManager.Model
 {
@@ -37,10 +35,15 @@ namespace ResearchNotesManager.Model
 
         void CreateDemoData(EntityContext context)
         {
-            //new User(context) { Username = "admin", Password = User.GetHash("admin"), CreatedAt = DateTime.Now };
-            //new User(context) { Username = "user", Password = User.GetHash("user"), CreatedAt = DateTime.Now };
-            //new SalesSettings(context) { NextSalesDocumentNumber = 1, CreatedAt = DateTime.Now };
-            //context.SaveChanges();
+            new UnitOfMeasures(context) { Name = "Kg", Description = "Kilogram" };
+            new UnitOfMeasures(context) { Name = "M", Description = "Metr" };
+            new UnitOfMeasures(context) { Name = "L", Description = "Litr" };
+            var unit = new UnitOfMeasures(context) { Name = "EACH", Description = "each" };
+            new Product(context) { Name = "Coke", Description = "Case of cokes", UOM = unit };
+            new Product(context) { Name = "Glass", Description = "Glass", UOM = unit };
+            new Product(context) { Name = "Laptop", Description = "Laptop", UOM = unit };
+            new Product(context) { Name = "Cup", Description = "Cup", UOM = unit };
+            context.SaveChanges();
         }
 
         public void RecreateDatabase()

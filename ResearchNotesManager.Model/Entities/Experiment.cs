@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ResearchNotesManager.Model.Entityes
+namespace ResearchNotesManager.Model.Entities
 {
 
 
@@ -15,6 +15,11 @@ namespace ResearchNotesManager.Model.Entityes
     using System.Data.Entity;
     public class Experiment : EntityBase
     {
+        public Experiment()
+        {
+
+        }
+
         public Experiment(EntityContext context) : base(context) { }
 
         DateTime _date;

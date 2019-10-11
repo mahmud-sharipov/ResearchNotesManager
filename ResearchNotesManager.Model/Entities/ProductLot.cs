@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ResearchNotesManager.Model.Entityes
+namespace ResearchNotesManager.Model.Entities
 {
     //таблитса барои 
 
@@ -13,6 +13,11 @@ namespace ResearchNotesManager.Model.Entityes
     using System.Data.Entity;
     public class ProductLot : EntityBase
     {
+        public ProductLot()
+        {
+
+        }
+
         public ProductLot(EntityContext context) : base(context) { }
 
         Product _product;

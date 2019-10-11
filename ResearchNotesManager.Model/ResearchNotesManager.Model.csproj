@@ -46,10 +46,10 @@
     <Compile Include="DbModelBuilderManager.cs" />
     <Compile Include="EntityBase.cs" />
     <Compile Include="EntityContext.cs" />
-    <Compile Include="Entityes\Experiment.cs" />
-    <Compile Include="Entityes\Product.cs" />
-    <Compile Include="Entityes\ProductLot.cs" />
-    <Compile Include="Entityes\UnitOfMeasures.cs" />
+    <Compile Include="Entities\Experiment.cs" />
+    <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\ProductLot.cs" />
+    <Compile Include="Entities\UnitOfMeasures.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

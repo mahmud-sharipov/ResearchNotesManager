@@ -12,7 +12,7 @@ namespace ResearchNotesManager.App.Pages.Home
     {
         public HomeViewModel()
         {
-            //InitNavigations();
+            InitNavigations();
         }
 
         ObservableCollection<HomePageNavigation> _navigations = new ObservableCollection<HomePageNavigation>();
@@ -31,55 +31,42 @@ namespace ResearchNotesManager.App.Pages.Home
         public void InitNavigations()
         {
             //product navigation
-            //var productNavigation = new HomePageNavigation() { Title = "Продукция" };
-            //productNavigation.Items.Add(new HomePageNavigationItem()
-            //{
-            //    Label = "Продукты",
-            //    PageId = "Products",
-            //    Icon = "BarcodeScanner",//Barcode BarcodeScanner
-            //    Action = new Command((p) => OpenNewPageIfNotExists<Product.ProductsPage>("Products"))
-            //});
-            //productNavigation.Items.Add(new HomePageNavigationItem()
-            //{
-            //    Label = "Виды продуктов",
-            //    PageId = "ProductTypes",
-            //    Icon = "Buffer",
-            //    Action = new Command((p) => OpenNewPageIfNotExists<ProductType.ProductTypePage>("ProductTypes"))
-            //});
+            var productNavigation = new HomePageNavigation() { Title = "Продукция" };
+            productNavigation.Items.Add(new HomePageNavigationItem()
+            {
+                Label = "Продукты",
+                PageId = "Products",
+                Icon = "BarcodeScanner",//Barcode BarcodeScanner
+                Action = new Command((p) => OpenNewPageIfNotExists<Product.Products>("Products"))
+            });
+            productNavigation.Items.Add(new HomePageNavigationItem()
+            {
+                Label = "Добавление продуктов",
+                PageId = "ProductLots",
+                Icon = "PlaylistAdd",
+                Action = new Command((p) => OpenNewPageIfNotExists<ProductLots.ProductLots>("ProductLots"))
+            });
 
-            //productNavigation.Items.Add(new HomePageNavigationItem()
-            //{
-            //    Label = "Статистика продаж продуктов",
-            //    PageId = "ProductStatisticsReport",
-            //    Icon = "ChartBar",
-            //    Action = new Command((p) => OpenNewPageIfNotExists<Report.ProductStatisticsReport.ProductStatisticsReportPage>("ProductStatisticsReport"))
-            //});
+            var experimentsNavigation = new HomePageNavigation() { Title = "Эксперименты" };
+            experimentsNavigation.Items.Add(new HomePageNavigationItem()
+            {
+                Label = "Текущие эксперименты",
+                PageId = "CurrentExperements",
+                Icon = "ChemicalWeapon",
+                //Action = new Command((p) => OpenNewPageIfNotExists<SalesPoint.SalesPointsPage>("SalesPoints"))
+            });//OfficeBuilding CityVariant
 
-            //var salesNavigation = new HomePageNavigation() { Title = "Продажи" };
-            //salesNavigation.Items.Add(new HomePageNavigationItem()
-            //{
-            //    Label = "Торговые точки",
-            //    PageId = "SalesPoints",
-            //    Icon = "OfficeBuilding",
-            //    Action = new Command((p) => OpenNewPageIfNotExists<SalesPoint.SalesPointsPage>("SalesPoints"))
-            //});//OfficeBuilding CityVariant
-            //salesNavigation.Items.Add(new HomePageNavigationItem()
-            //{
-            //    Label = "Расходные накладные",
-            //    PageId = "SalesDocuments",
-            //    Icon = "Notebook",
-            //    Action = new Command((p) => OpenNewPageIfNotExists<Sales.SalesDocumentsPage>("SalesDocuments"))
-            //});
-            //salesNavigation.Items.Add(new HomePageNavigationItem()
-            //{
-            //    Label = "Отчет о продажах",
-            //    PageId = "SalesReport",
-            //    Icon = "BookMinus",
-            //    Action = new Command((p) => OpenNewPageIfNotExists<Report.SelesReport.SalesReportPage>("SalesReport"))
-            //});
+            experimentsNavigation.Items.Add(new HomePageNavigationItem()
+            {
+                Label = "Ежедневные эксперименты",
+                PageId = "DailyExperiments",
+                Icon = "FormatListChecks",
+                //Action = new Command((p) => OpenNewPageIfNotExists<Report.ProductStatisticsReport.ProductStatisticsReportPage>("ProductStatisticsReport"))
+            });
 
-            //Navigations.Add(productNavigation);
-            //Navigations.Add(salesNavigation);
+
+            Navigations.Add(productNavigation);
+            Navigations.Add(experimentsNavigation);
         }
 
         void OpenNewPageIfNotExists<TPage>(string pageId) where TPage : BasePage, new()

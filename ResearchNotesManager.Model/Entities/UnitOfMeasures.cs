@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ResearchNotesManager.Model.Entityes
+namespace ResearchNotesManager.Model.Entities
 {
 
     // таблитса барои воҳиди ченаки маҳсулот (продуктҳо)
@@ -14,6 +14,11 @@ namespace ResearchNotesManager.Model.Entityes
     using System.Data.Entity;
     public class UnitOfMeasures : EntityBase
     {
+        public UnitOfMeasures()
+        {
+
+        }
+
         public UnitOfMeasures(EntityContext context) : base(context) { }
 
         string _name;
