@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 namespace ResearchNotesManager.Model.Entityes
 {
 
+
+    //таблитса барои запси експримент
+
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Data.Entity;

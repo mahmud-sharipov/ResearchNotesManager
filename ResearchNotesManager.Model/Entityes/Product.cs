@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace ResearchNotesManager.Model.Entityes
 {
+    // таблитса барои иловаи маҳсулотҳо (продуктҳо)
 
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Data.Entity;
     public class Product : EntityBase
     {
+    
         public Product(EntityContext context) : base(context) { }
 
         string _name;
