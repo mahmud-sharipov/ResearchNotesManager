@@ -23,7 +23,7 @@ namespace ResearchNotesManager.Model.Entities
             set => OnPropertySetting(nameof(DateTime), value, ref _dateTime);
         }
 
-        string _description;
+        string _description = "";
         public string Description
         {
             get => _description;
@@ -37,7 +37,8 @@ namespace ResearchNotesManager.Model.Entities
             set
             {
                 OnPropertySetting(nameof(Result), value, ref _result);
-                Experiment.RaisePropertyChanged(nameof(Experiment.TotalResult));
+                if (Experiment != null)
+                    Experiment.RaisePropertyChanged(nameof(Experiment.TotalResult));
             }
         }
 
@@ -48,7 +49,8 @@ namespace ResearchNotesManager.Model.Entities
             set
             {
                 OnPropertySetting(nameof(Quantity), value, ref _quantity);
-                Experiment.RaisePropertyChanged(nameof(Experiment.TotalQuantity));
+                if (Experiment != null)
+                    Experiment.RaisePropertyChanged(nameof(Experiment.TotalQuantity));
             }
         }
 

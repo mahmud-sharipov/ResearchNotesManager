@@ -1,27 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-namespace ResearchNotesManager.App.Pages.Experiment
+﻿namespace ResearchNotesManager.App.Pages.Experiment
 {
     /// <summary>
     /// Interaction logic for ExperimentPage.xaml
     /// </summary>
-    public partial class ExperimentPage : UserControl
+    public partial class ExperimentPage : General.BasePage
     {
-        public ExperimentPage()
+        public ExperimentPage(ExperimentViewModel viewModel)
         {
+            Title = $"{viewModel.Experiment.Date.ToString("dd-MM-yyyy")}: {viewModel.Experiment.Product.Name}";
+            Id = "Experiment:" + viewModel.Experiment.Guid;
+            ViewModel = viewModel;
+            DataContext = ViewModel;
             InitializeComponent();
         }
     }

@@ -53,15 +53,15 @@ namespace ResearchNotesManager.App.Pages.Home
                 Label = "Текущие эксперименты",
                 PageId = "CurrentExperements",
                 Icon = "ChemicalWeapon",
-                //Action = new Command((p) => OpenNewPageIfNotExists<SalesPoint.SalesPointsPage>("SalesPoints"))
+                Action = new Command((p) => OpenNewPageIfNotExists<Experiment.CurrentExperimentsPage>("CurrentExperiments"))
             });//OfficeBuilding CityVariant
 
             experimentsNavigation.Items.Add(new HomePageNavigationItem()
             {
-                Label = "Ежедневные эксперименты",
-                PageId = "DailyExperiments",
+                Label = "Все эксперименты",
+                PageId = "Experiments",
                 Icon = "FormatListChecks",
-                //Action = new Command((p) => OpenNewPageIfNotExists<Report.ProductStatisticsReport.ProductStatisticsReportPage>("ProductStatisticsReport"))
+                Action = new Command((p) => OpenNewPageIfNotExists<Experiment.ExperimentsPage>("Experiments"))
             });
 
 
@@ -77,10 +77,7 @@ namespace ResearchNotesManager.App.Pages.Home
                 UIManager.PageManager.AddPage(new TPage());
         }
 
-        public override bool CanClose()
-        {
-            return true;
-        }
+        public override bool CanClose() => false;
     }
 
     public class HomePageNavigation

@@ -1,12 +1,14 @@
-﻿<localGeneral:BasePage x:Class="ResearchNotesManager.App.Pages.Product.Products"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:localGeneral="clr-namespace:ResearchNotesManager.App.General"
-             xmlns:materialDesign="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+﻿<localGeneral:BasePage
+    x:Class="ResearchNotesManager.App.Pages.Product.Products"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:localGeneral="clr-namespace:ResearchNotesManager.App.General"
+    xmlns:materialDesign="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -15,88 +17,136 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <UserControl.InputBindings>
-        <KeyBinding Key="N" Modifiers="Ctrl" Command="{Binding AddNewEntity}"/>
-        <KeyBinding Key="F5" Command="{Binding RefreshPage}"/>
+        <KeyBinding
+            Key="N"
+            Command="{Binding AddNewEntity}"
+            Modifiers="Ctrl" />
+        <KeyBinding Key="F5" Command="{Binding RefreshPage}" />
     </UserControl.InputBindings>
-    <materialDesign:DialogHost Identifier="{x:Static localGeneral:DialodIdentifiers.ProductsPage }">
+    <materialDesign:DialogHost Identifier="{x:Static localGeneral:DialodIdentifiers.ProductsPage}">
         <materialDesign:DrawerHost>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="400" />
                 </Grid.ColumnDefinitions>
                 <Grid>
-                    <DataGrid Margin="0 8 0 0" ItemsSource="{Binding Products}" materialDesign:DataGridAssist.CellPadding="15 8" 
-                          materialDesign:DataGridAssist.ColumnHeaderPadding="8" x:Name="productsGrig" SelectedItem="{Binding Product}">
+                    <DataGrid
+                        x:Name="productsGrig"
+                        Margin="0,8,0,0"
+                        materialDesign:DataGridAssist.CellPadding="15 8"
+                        materialDesign:DataGridAssist.ColumnHeaderPadding="8"
+                        ItemsSource="{Binding Products}"
+                        SelectedItem="{Binding Product}">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Name}"
-                                            IsReadOnly="True"
-                                            Header="Название" Width="auto" MaxWidth="200"/>
+                            <DataGridTextColumn
+                                Width="auto"
+                                MaxWidth="200"
+                                Binding="{Binding Name}"
+                                Header="Название"
+                                IsReadOnly="True" />
 
-                            <DataGridTextColumn Binding="{Binding UOM.Name}" IsReadOnly="True"
-                                            Header="Единица измерения" Width="auto" MaxWidth="150"/>
+                            <DataGridTextColumn
+                                Width="auto"
+                                MaxWidth="150"
+                                Binding="{Binding UOM.Name}"
+                                Header="Единица измерения"
+                                IsReadOnly="True" />
 
-                            <DataGridTextColumn Binding="{Binding NetQuantity}" IsReadOnly="True"
-                                            Header="Остаток" Width="auto" MaxWidth="100"/>
+                            <DataGridTextColumn
+                                Width="auto"
+                                MaxWidth="100"
+                                Binding="{Binding NetQuantity}"
+                                Header="Остаток"
+                                IsReadOnly="True" />
 
-                            <DataGridTextColumn Binding="{Binding Description}" IsReadOnly="True"
-                                            Header="Описание" Width="auto" MaxWidth="350"/>
-                            
+                            <DataGridTextColumn
+                                Width="auto"
+                                MaxWidth="350"
+                                Binding="{Binding Description}"
+                                Header="Описание"
+                                IsReadOnly="True" />
+
                             <DataGridTemplateColumn Width="100">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
-                                            materialDesign:DialogHost.DialogClosingAttached="DeleteEntity" 
-                                            Style="{StaticResource MaterialDesignFlatButton}" Padding="0" ToolTip="Удалить продукт">
+                                        <Button
+                                            Padding="0"
+                                            materialDesign:DialogHost.DialogClosingAttached="DeleteEntity"
+                                            Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                                            Style="{StaticResource MaterialDesignFlatButton}"
+                                            ToolTip="Удалить продукт">
                                             <Button.CommandParameter>
                                                 <StackPanel Margin="16">
-                                                    <StackPanel Orientation="Horizontal" Margin="5 10 10 20">
-                                                        <materialDesign:PackIcon Kind="WarningOutline" Width="40" Height="40" />
-                                                        <TextBlock Text="Вы уверены что хотите удалить этот продукт?" VerticalAlignment="Bottom" FontSize="18"
-                                                               Style="{StaticResource MaterialDesignDisplay1TextBlock}" Margin="15 0 0 5"/>
+                                                    <StackPanel Margin="5,10,10,20" Orientation="Horizontal">
+                                                        <materialDesign:PackIcon
+                                                            Width="40"
+                                                            Height="40"
+                                                            Kind="WarningOutline" />
+                                                        <TextBlock
+                                                            Margin="15,0,0,5"
+                                                            VerticalAlignment="Bottom"
+                                                            FontSize="18"
+                                                            Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                                                            Text="Вы уверены что хотите удалить этот продукт?" />
                                                     </StackPanel>
-                                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                                        <Button Style="{StaticResource MaterialDesignRaisedAccentButton}" IsCancel="False"
+                                                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                                        <Button
+                                                            Margin="10,0"
                                                             Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
-                                                            CommandParameter="{Binding}" Content="Да, удалить" Margin="10 0"/>
+                                                            CommandParameter="{Binding}"
+                                                            Content="Да, удалить"
+                                                            IsCancel="False"
+                                                            Style="{StaticResource MaterialDesignRaisedAccentButton}" />
 
-                                                        <Button Style="{StaticResource MaterialDesignFlatButton}" IsCancel="True"
-                                                            Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" 
-                                                            Content="Нет, не удалить"/>
+                                                        <Button
+                                                            Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                                                            Content="Нет, не удалить"
+                                                            IsCancel="True"
+                                                            Style="{StaticResource MaterialDesignFlatButton}" />
                                                     </StackPanel>
                                                 </StackPanel>
                                             </Button.CommandParameter>
-                                            <materialDesign:PackIcon Width="24" Height="24" Kind="TrashCanOutline" Foreground="#c00"/>
+                                            <materialDesign:PackIcon
+                                                Width="24"
+                                                Height="24"
+                                                Foreground="#c00"
+                                                Kind="TrashCanOutline" />
                                         </Button>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Command="{Binding AddNewEntity}" Margin="0,0,20,20" HorizontalAlignment="Right"
-                        VerticalAlignment="Bottom" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                    <Button
+                        Margin="0,0,20,20"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Command="{Binding AddNewEntity}"
+                        Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
                         ToolTip="Добавить новый продукт">
-                        <materialDesign:PackIcon Width="24" Height="24" Kind="Plus" />
+                        <materialDesign:PackIcon
+                            Width="24"
+                            Height="24"
+                            Kind="Plus" />
                     </Button>
-                    <!--<Button Command="{Binding RefreshPage}" Margin="0,20,20,20" HorizontalAlignment="Right"
-                        VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}"
-                        ToolTip="Обновить страницу">
-                        <materialDesign:PackIcon Width="24" Height="24" Kind="Refresh" />
-                    </Button>-->
                 </Grid>
                 <Grid Grid.Column="1">
-                    <StackPanel Orientation="Vertical" Margin="10 20">
-                        <TextBox  materialDesign:HintAssist.Hint="Название" Width="400"
-                                Margin="0 0 0 15" Text="{Binding Product.Name, UpdateSourceTrigger=PropertyChanged}"
-                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <StackPanel Margin="10,20" Orientation="Vertical">
+                        <TextBox
+                            Width="400"
+                            Margin="0,0,0,15"
+                            materialDesign:HintAssist.Hint="Название"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            Text="{Binding Product.Name, UpdateSourceTrigger=PropertyChanged}" />
 
                         <ComboBox
-                                materialDesign:HintAssist.Hint="Единица измерения"
-                                MinWidth="72"
-                                Margin="0 0 0 15"
-                                ItemsSource="{Binding UOMs}"
-                                SelectedItem="{Binding Product.UOM}"
-                                Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                            MinWidth="72"
+                            Margin="0,0,0,15"
+                            materialDesign:HintAssist.Hint="Единица измерения"
+                            ItemsSource="{Binding UOMs}"
+                            SelectedItem="{Binding Product.UOM}"
+                            Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                             <ComboBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <VirtualizingStackPanel />
@@ -104,17 +154,20 @@
                             </ComboBox.ItemsPanel>
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Name}"/>
+                                    <TextBlock Text="{Binding Name}" />
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
 
-                        <TextBox Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
-                                 VerticalAlignment="Top" AcceptsReturn="True" 
-                                 MaxHeight="150" VerticalScrollBarVisibility="Auto"
-                                 TextWrapping="Wrap" 
-                                 Text="{Binding Product.Description, UpdateSourceTrigger=PropertyChanged}"
-                                 materialDesign:HintAssist.Hint="Описание"/>
+                        <TextBox
+                            MaxHeight="150"
+                            VerticalAlignment="Top"
+                            materialDesign:HintAssist.Hint="Описание"
+                            AcceptsReturn="True"
+                            Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+                            Text="{Binding Product.Description, UpdateSourceTrigger=PropertyChanged}"
+                            TextWrapping="Wrap"
+                            VerticalScrollBarVisibility="Auto" />
                     </StackPanel>
                 </Grid>
             </Grid>

@@ -10,10 +10,12 @@ namespace ResearchNotesManager.App
     {
         public MainWindow()
         {
-            DataContext = new WindowsViewModel();
+            var viewModel = new WindowsViewModel();
+            DataContext = viewModel;
             InitializeComponent();
             UIManager.MessageManager.SetSnackbar(Snackbar);
             Snackbar.MessageQueue = new SnackbarMessageQueue(TimeSpan.FromMilliseconds(6000));
+            viewModel.OpenHomePage.Execute(null);
         }
     }
 }

@@ -1,28 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-namespace ResearchNotesManager.App.Pages.Experiment
+﻿namespace ResearchNotesManager.App.Pages.Experiment
 {
     /// <summary>
     /// Interaction logic for ExperimentsPage.xaml
     /// </summary>
-    public partial class ExperimentsPage : UserControl
+    public partial class ExperimentsPage : General.BasePage
     {
         public ExperimentsPage()
         {
+            Title = "Все эксперименты";
+            Id = "Experiments";
+            ViewModel = new ExperimentsViewModel();
+            DataContext = ViewModel;
             InitializeComponent();
+        }
+
+        private void productsGrig_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            ((ExperimentsViewModel)DataContext).OpenEntityPage(experimentsGrig.SelectedItem);
         }
     }
 }

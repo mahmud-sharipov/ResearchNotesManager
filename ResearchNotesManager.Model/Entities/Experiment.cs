@@ -1,20 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ResearchNotesManager.Model.Entities
 {
-
-    using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Collections.Specialized;
     using System.Data.Entity;
     public class Experiment : EntityBase
     {
         public Experiment()
         {
+            Details.CollectionChanged += Details_CollectionChanged;
+        }
 
+        private void Details_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            RaisePropertyChanged(nameof(TotalQuantity));
+            RaisePropertyChanged(nameof(TotalResult));
         }
 
         public Experiment(EntityContext context) : base(context) { }
@@ -39,8 +41,8 @@ namespace ResearchNotesManager.Model.Entities
             set => OnPropertySetting(nameof(Product), value, ref _product);
         }
 
-        private ICollection<ExperimentDetail> _details = new ObservableCollection<ExperimentDetail>();
-        public virtual ICollection<ExperimentDetail> Details
+        private ObservableCollection<ExperimentDetail> _details = new ObservableCollection<ExperimentDetail>();
+        public virtual ObservableCollection<ExperimentDetail> Details
         {
             get => _details;
             set => OnPropertySetting(nameof(Details), value, ref _details);

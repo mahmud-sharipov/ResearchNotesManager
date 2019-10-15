@@ -23,7 +23,7 @@ namespace ResearchNotesManager.Model.Entities
 
         public string Sku => Name.Substring(0, 2).ToUpper();
 
-        string _name;
+        string _name = "";
         public string Name
         {
             get => _name;
@@ -34,7 +34,7 @@ namespace ResearchNotesManager.Model.Entities
             }
         }
 
-        string _description;
+        string _description = "";
         public string Description
         {
             get => _description;

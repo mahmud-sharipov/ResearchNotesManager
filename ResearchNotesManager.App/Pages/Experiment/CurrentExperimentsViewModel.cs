@@ -4,19 +4,24 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ResearchNotesManager.App.Pages.Experiment
 {
-    public class ExperimentsViewModel : BaseViewModel
+    public class CurrentExperimentsViewModel : BaseViewModel
     {
-        public ExperimentsViewModel()
+        public CurrentExperimentsViewModel()
         {
             DataProvider = new DataProvider();
-            products = new ObservableCollection<Model.Entities.Product>(DataProvider.GetEntities<Model.Entities.Product>().OrderBy(pr => pr.Name).ToList());
+            var currentDate = DateTime.Now.Date;
+            experiments = new ObservableCollection<Model.Entities.Experiment>(
+                    DataProvider.GetEntities<Model.Entities.Experiment>().Where(pr => pr.Date >= currentDate).ToList()
+                );
         }
 
-        ObservableCollection<Model.Entities.Product> products;
-        public virtual ICollection<Model.Entities.Product> Products => products;
+        ObservableCollection<Model.Entities.Experiment> experiments;
+        public virtual ICollection<Model.Entities.Experiment> Experiments => experiments;
 
         public override Command DiscardChanges => new Command(p => { });
 
