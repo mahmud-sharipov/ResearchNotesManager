@@ -69,7 +69,7 @@ namespace ResearchNotesManager.App.Pages.Home
             Navigations.Add(experimentsNavigation);
         }
 
-        void OpenNewPageIfNotExists<TPage>(string pageId) where TPage : BasePage, new()
+        void OpenNewPageIfNotExists<TPage>(string pageId, params object[] parameters) where TPage : BasePage, new()
         {
             if (UIManager.PageManager.IsPageAlreadyOpened(pageId))
                 UIManager.PageManager.SetCurrentPage(pageId);

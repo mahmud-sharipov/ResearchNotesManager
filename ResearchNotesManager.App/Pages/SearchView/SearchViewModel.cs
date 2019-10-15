@@ -47,11 +47,12 @@ namespace ResearchNotesManager.App.Pages.SearchView
 
         public void OpenEntityPage(Model.Entities.Product product)
         {
-            var pageId = "Product:" + product.Guid;
-            if (UIManager.PageManager.IsPageAlreadyOpened(pageId))
-                UIManager.PageManager.SetCurrentPage(pageId);
-            else
-                ;// UIManager.PageManager.AddPage(new ProductPage(new ProductViewModel(DataProvider, product)));
+            throw new NotImplementedException();
+            //var pageId = "Product:" + product.Guid;
+            //if (UIManager.PageManager.IsPageAlreadyOpened(pageId))
+            //    UIManager.PageManager.SetCurrentPage(pageId);
+            //else
+            //    UIManager.PageManager.AddPage(new ProductPage(new ProductViewModel(DataProvider, product)));
         }
 
         public override Command DiscardChanges => new Command(p => { });

@@ -16,6 +16,7 @@ namespace ResearchNotesManager.Model
             ProductConfiguration.Configure(modelBuilder, ModelPrefix);
             ProductLotConfiguration.Configure(modelBuilder, ModelPrefix);
             ExperimentConfiguration.Configure(modelBuilder, ModelPrefix);
+            ExperimentDetailConfiguration.Configure(modelBuilder, ModelPrefix);
 
         }
     }

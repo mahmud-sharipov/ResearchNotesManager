@@ -67,6 +67,14 @@
     <Compile Include="General\DialodIdentifiers.cs" />
     <Compile Include="General\IPagesControl.cs" />
     <Compile Include="General\UIManager.cs" />
+    <Compile Include="Pages\Experiment\ExperimentPage.xaml.cs">
+      <DependentUpon>ExperimentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Experiment\ExperimentsPage.xaml.cs">
+      <DependentUpon>ExperimentsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Experiment\ExperimentsViewModel.cs" />
+    <Compile Include="Pages\Experiment\ExperimentViewModel.cs" />
     <Compile Include="Pages\Home\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -97,6 +105,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\Experiment\ExperimentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Experiment\ExperimentsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Home\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

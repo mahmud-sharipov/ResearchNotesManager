@@ -41,7 +41,7 @@ namespace ResearchNotesManager.Model.Entities
             set => OnPropertySetting(nameof(Description), value, ref _description);
         }
 
-        public virtual decimal NetQuantity => Lots.Sum(l => l.Quantity) - Experiments.Sum(e => e.Quantity);
+        public virtual decimal NetQuantity => Lots.Sum(l => l.Quantity) - Experiments.Sum(e => e.TotalQuantity);
 
         UnitOfMeasures _uom;
         public virtual UnitOfMeasures UOM

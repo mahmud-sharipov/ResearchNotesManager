@@ -42,7 +42,6 @@
                                         <ColumnDefinition SharedSizeGroup="Checkerz" />
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
-                                    <!--Style="{StaticResource MaterialDesignFloatingActionLightButton}"-->
                                     <Button
                                           Style="{StaticResource MaterialDesignFloatingActionLightButton}"
                                           ToolTip="MaterialDesignActionLightToggleButton" 

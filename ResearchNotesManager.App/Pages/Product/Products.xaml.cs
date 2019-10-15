@@ -30,13 +30,12 @@ namespace ResearchNotesManager.App.Pages.Product
 
         private void DeleteEntity(object sender, DialogClosingEventArgs e)
         {
-            if (!e.IsCancelled) ;
+            if (!e.IsCancelled)
                 (ViewModel as ProductsViewModel).DeleteEntity.Execute(e.Parameter);
         }
 
         private void SaveNewProduct(object sender, DialogClosingEventArgs e)
         {
-            if (!e.IsCancelled) ;
             (ViewModel as ProductsViewModel).DeleteEntity.Execute(e.Parameter);
         }
     }
