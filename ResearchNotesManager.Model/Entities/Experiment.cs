@@ -3,6 +3,9 @@ using System.Linq;
 
 namespace ResearchNotesManager.Model.Entities
 {
+    //таблитса барои запси експримент
+
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Collections.Specialized;
     using System.Data.Entity;
