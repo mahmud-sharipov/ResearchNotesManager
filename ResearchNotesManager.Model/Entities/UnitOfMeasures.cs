@@ -21,14 +21,14 @@ namespace ResearchNotesManager.Model.Entities
 
         public UnitOfMeasures(EntityContext context) : base(context) { }
 
-        string _name;
+        string _name = "";
         public string Name
         {
             get => _name;
             set => OnPropertySetting(nameof(Name), value, ref _name);
         }
 
-        string _description;
+        string _description = "";
         public string Description
         {
             get => _description;

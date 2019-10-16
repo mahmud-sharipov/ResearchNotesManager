@@ -28,6 +28,12 @@ namespace ResearchNotesManager.Model
             return newEntity;
         }
 
+        public void Add(EntityBase entity)
+        {
+            entity.AddToContext(Context);
+            entity.CreatedAt = DateTime.Now;
+        }
+
         public void Delete(EntityBase entity)
         {
             Context.Delete(entity);

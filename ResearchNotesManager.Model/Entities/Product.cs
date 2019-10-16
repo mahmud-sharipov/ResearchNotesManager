@@ -23,7 +23,7 @@ namespace ResearchNotesManager.Model.Entities
 
         public string Sku => Name.Substring(0, 2).ToUpper();
 
-        string _name;
+        string _name = "";
         public string Name
         {
             get => _name;
@@ -34,14 +34,14 @@ namespace ResearchNotesManager.Model.Entities
             }
         }
 
-        string _description;
+        string _description = "";
         public string Description
         {
             get => _description;
             set => OnPropertySetting(nameof(Description), value, ref _description);
         }
 
-        public virtual decimal NetQuantity => Lots.Sum(l => l.Quantity) - Experiments.Sum(e => e.Quantity);
+        public virtual decimal NetQuantity => Lots.Sum(l => l.Quantity) - Experiments.Sum(e => e.TotalQuantity);
 
         UnitOfMeasures _uom;
         public virtual UnitOfMeasures UOM

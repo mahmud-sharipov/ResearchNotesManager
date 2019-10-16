@@ -18,49 +18,13 @@ namespace ResearchNotesManager.Model
 
         public EntityContext() : base(GetConnectionString("research_notes"))
         {
-            if (!Database.Exists())
-            {
-                Database.Create();
-                CreateDemoData(this);
-            }
-            else if (firstInstance && ShouldRecreateDatabase())
-                RecreateDatabase();
+            Database.CreateIfNotExists();
             Configuration.LazyLoadingEnabled = true;
             Configuration.ProxyCreationEnabled = true;
             ObjectContext context = ((IObjectContextAdapter)this).ObjectContext;
             context.ObjectStateManager.ObjectStateManagerChanged += ObjectStateManager_ObjectStateManagerChanged;
             context.ObjectMaterialized += Context_ObjectMaterialized;
             context.Connection.StateChange += Connection_StateChange;
-        }
-
-        void CreateDemoData(EntityContext context)
-        {
-            new UnitOfMeasures(context) { Name = "Kg", Description = "Kilogram" };
-            new UnitOfMeasures(context) { Name = "M", Description = "Metr" };
-            new UnitOfMeasures(context) { Name = "L", Description = "Litr" };
-            var unit = new UnitOfMeasures(context) { Name = "EACH", Description = "each" };
-            new Product(context) { Name = "Coke", Description = "Case of cokes", UOM = unit };
-            new Product(context) { Name = "Glass", Description = "Glass", UOM = unit };
-            new Product(context) { Name = "Laptop", Description = "Laptop", UOM = unit };
-            new Product(context) { Name = "Cup", Description = "Cup", UOM = unit };
-            context.SaveChanges();
-        }
-
-        public void RecreateDatabase()
-        {
-            Database.Delete();
-            Database.Create();
-            CreateDemoData(this);
-            firstInstance = false;
-        }
-
-        bool ShouldRecreateDatabase()
-        {
-            //    var settings = GetEntities<SalesSettings>().SingleOrDefault();
-            //    if (settings == null || settings.CreatedAt.Date < DateTime.Now.Date.AddDays(-30))
-            //        return true;
-            //    else
-            return false;
         }
 
         static string GetConnectionString(string dbName, string userName = "root", string pass = "") =>
